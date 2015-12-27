@@ -33,14 +33,14 @@
                                                     <rect key="frame" x="15" y="5" width="32" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="N8a-xA-8Ae">
                                                     <rect key="frame" x="15" y="25" width="41" height="14"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -60,7 +60,7 @@
                     <navigationItem key="navigationItem" title="Star List" id="7hX-fd-RzL">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="qzw-Ej-vak">
                             <connections>
-                                <segue destination="gc5-Hb-iCw" kind="show" id="YPw-OR-Y82"/>
+                                <segue destination="gc5-Hb-iCw" kind="show" identifier="show detail" id="YPw-OR-Y82"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -89,18 +89,37 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                             </textField>
-                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VI3-gB-RcH">
-                                <rect key="frame" x="20" y="110" width="560" height="216"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Star Age" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9pD-Od-fTc">
+                                <rect key="frame" x="20" y="113" width="66" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="20" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PMt-hK-iXB">
+                                <rect key="frame" x="94" y="110" width="486" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="touchTextFieldAge:" destination="gc5-Hb-iCw" eventType="touchUpInside" id="bHj-7p-iy7"/>
+                                </connections>
+                            </textField>
+                            <pickerView hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VI3-gB-RcH">
+                                <rect key="frame" x="20" y="148" width="560" height="216"/>
                             </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="leadingMargin" secondItem="VI3-gB-RcH" secondAttribute="leading" id="3XM-tJ-iSQ"/>
                             <constraint firstItem="paT-GU-UZ8" firstAttribute="trailing" secondItem="PKB-r7-xQe" secondAttribute="trailingMargin" id="5mb-uo-VW3"/>
-                            <constraint firstItem="VI3-gB-RcH" firstAttribute="top" secondItem="paT-GU-UZ8" secondAttribute="bottom" constant="8" id="6EQ-dl-wgS"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="VI3-gB-RcH" secondAttribute="trailing" id="YMf-bP-ZjF"/>
+                            <constraint firstItem="PMt-hK-iXB" firstAttribute="top" secondItem="paT-GU-UZ8" secondAttribute="bottom" constant="8" id="8LF-3Y-iqq"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="VI3-gB-RcH" secondAttribute="trailing" id="9Sg-F1-Ijj"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="9pD-Od-fTc" secondAttribute="leading" id="AbC-c4-EAv"/>
+                            <constraint firstItem="PMt-hK-iXB" firstAttribute="leading" secondItem="9pD-Od-fTc" secondAttribute="trailing" constant="8" id="VaI-XV-YBC"/>
                             <constraint firstItem="paT-GU-UZ8" firstAttribute="leading" secondItem="PKB-r7-xQe" secondAttribute="leadingMargin" id="ZR1-0Z-GcP"/>
+                            <constraint firstItem="9pD-Od-fTc" firstAttribute="baseline" secondItem="PMt-hK-iXB" secondAttribute="baseline" id="ajb-xD-c2y"/>
                             <constraint firstItem="paT-GU-UZ8" firstAttribute="top" secondItem="Oea-x2-0ll" secondAttribute="bottom" constant="8" id="fkt-KB-wKX"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="VI3-gB-RcH" secondAttribute="leading" id="hov-NM-gjZ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="PMt-hK-iXB" secondAttribute="trailing" id="j57-PY-BQc"/>
+                            <constraint firstItem="VI3-gB-RcH" firstAttribute="top" secondItem="PMt-hK-iXB" secondAttribute="bottom" constant="8" id="nRp-7i-Azy"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Star Detail" id="flo-0P-6xR">
@@ -112,6 +131,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="pickerAge" destination="VI3-gB-RcH" id="qF2-eO-4CH"/>
+                        <outlet property="textFieldAge" destination="PMt-hK-iXB" id="nJS-dH-f2D"/>
                         <outlet property="textFieldStarName" destination="paT-GU-UZ8" id="hjM-e6-mRm"/>
                     </connections>
                 </viewController>

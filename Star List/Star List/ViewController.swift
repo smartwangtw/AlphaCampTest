@@ -56,6 +56,30 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         return cell
     }
     
+    // Mark: TableView Delegate
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.Delete {
+            // delete on core data
+            managedObjectContext.deleteObject(fetchResults[indexPath.row] as NSManagedObject)
+            appDelegate.saveContext()
+            
+            // delete on array
+            fetchResults.removeAtIndex(indexPath.row)
+            
+            tableView.reloadData()
+        }
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        performSegueWithIdentifier("show detail", sender: "Edit")
+    }
+    
+    
+    
     // Mark: Private method
     func refreshResults() {
         // Create a new fetch request using the Box entity
@@ -73,6 +97,17 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             // do nothing now
         }
         
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let mode = sender {
+            if mode as? String == "Edit" {
+                let vc = segue.destinationViewController as! StarDetailViewController
+                let star = fetchResults[(tableViewStar.indexPathForSelectedRow?.row)!]
+                
+                vc.currentStarId = star.objectID
+            }
+        }
     }
     
     
